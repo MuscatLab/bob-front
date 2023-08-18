@@ -5,6 +5,8 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --button-primary: #343434;
+  --button-secondary: #FF4707;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,4 +19,17 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+}
+
+.popup {
+  background: #FFDEBF;
+  color: #461B1B;
+}
+
+.buttonPrimary {
+  background: var(--button-primary);
+}
+
+.buttonSecondary {
+  background: var(--button-secondary);
 }

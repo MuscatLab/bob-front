@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={russo.className}>{children}</body>
+      <body className={`${russo.className} flex justify-center w-full`}>{children}</body>
     </html>
   )
 }
