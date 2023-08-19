@@ -1,8 +1,8 @@
-import { postCart } from "@/api/MenuApi";
-
 const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const postOrder = async () => {
-    const data = await postCart(cart);
+    const data = await fetch(`/api/postCard`, {
+      body: cart
+    });
   };
   return (
     <div className="w-full h-16 flex flex-row">
