@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+// Assets
+import { PiBowlFoodFill } from "react-icons/pi";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,10 +56,10 @@ export default function Home() {
         />
       </section>
       <section id="order" className="flex w-full text-slate-50">
-        <div className="flex justify-center gap-5 w-full p-4 buttonPrimary">
-          <Image src="/togo.png" alt="ORDER" width={40} height={40} />
+        <div className="flex justify-center items-center gap-2 w-full p-4 buttonPrimary">
+          <PiBowlFoodFill className="text-4xl" />
           <span
-            className="text-3xl py-2"
+            className="text-3xl"
             onClick={() => {
               setIsModalOpen(true);
             }}
