@@ -281,6 +281,7 @@ const SelectModal = ({
                 setCart({
                   menus: {
                     name: data.name,
+                    quantity: portion,
                     price: data.price,
                     options: [
                       {
