@@ -28,8 +28,8 @@ export default function Home() {
     const res = await fetch(`/api/login`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-      },  
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         email: id,
         password: password,
@@ -120,11 +120,11 @@ export default function Home() {
                   href={"/order/menu"}
                   className="w-1/2 flex justify-center items-center bg-[#343434]"
                 >
-                  <span className="text-2xl">Guest</span>
+                  <span className="text-2xl text-white">Guest</span>
                 </Link>
                 <div className="w-1/2 flex justify-center items-center bg-[#FF4707]">
                   <span
-                    className="text-2xl cursor-pointer"
+                    className="text-2xl cursor-pointer text-white"
                     onClick={() => {
                       signIn();
                       setId("ID");
@@ -139,7 +139,7 @@ export default function Home() {
               <div className="h-1/5 w-full flex flex-row">
                 <div className="w-1/2 flex justify-center items-center bg-[#343434]">
                   <span
-                    className="text-2xl cursor-pointer"
+                    className="text-2xl cursor-pointer text-white"
                     onClick={() => {
                       setIsModalOpen(false);
                       setIsLogin(false);
@@ -154,7 +154,7 @@ export default function Home() {
                   className="w-1/2 flex justify-center items-center bg-[#FF4707]"
                 >
                   <span
-                    className="text-2xl cursor-pointer"
+                    className="text-2xl cursor-pointer text-white"
                     onClick={() => {
                       setIsModalOpen(false);
                       setIsLogin(false);
