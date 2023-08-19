@@ -296,8 +296,8 @@ const SelectModal = ({
             </div>
             <p className="text-sm">Donated Points:</p>
             <p>
-              {data.price} x {portion}% ={" "}
-              {Math.floor(Number(data.price) * (Number(portion) / 100))} pt(s).
+              {data.price} x {100 - Number(portion)}% ={" "}
+              {Math.floor(Number(data.price) * ((100 - Number(portion)) / 100))} pt(s).
             </p>
           </div>
           <div className="h-16 bg-[#FF4707] flex justify-center items-center">
