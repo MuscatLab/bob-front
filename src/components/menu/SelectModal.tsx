@@ -18,13 +18,13 @@ const SelectModal = ({
   const [isChecked, setIsChecked] = useState(false);
   
   const [spiciness, setSpiciness] 
-    = useState(data.tastes.length >= 0 ? data.tastes[0].steps.length : undefined);
+    = useState(data.tastes.length >= 0 ? data.tastes[0].steps.length - 1 : undefined);
   const [saltiness, setSaltiness] 
-    = useState(data.tastes.length > 1 ? data.tastes[1].steps.length : undefined);
+    = useState(data.tastes.length > 1 ? data.tastes[1].steps.length - 1 : undefined);
   const [sweetness, setSweetness]
-    = useState(data.tastes.length > 2 ? data.tastes[2].steps.length : undefined)
+    = useState(data.tastes.length > 2 ? data.tastes[2].steps.length - 1 : undefined)
   const [sourness, setSourness]
-    = useState(data.tastes.length > 3 ? data.tastes[3].steps.length : undefined);
+    = useState(data.tastes.length > 3 ? data.tastes[3].steps.length - 1 : undefined);
 
   const incrementAndReset = (value: any, setter: any) => {
     setter((prevValue: number) => (prevValue >= 10 ? 1 : prevValue + 1));
