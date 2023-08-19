@@ -205,10 +205,16 @@ const SelectModal = ({
               <FaWindowClose
                 className="text-[#461B1B] text-2xl"
                 onClick={() => {
-                  setSpiciness(data.tastes[0].steps.length - 1);
-                  setSaltiness(data.tastes[1].steps.length - 1);
-                  setSweetness(data.tastes[2].steps.length - 1);
-                  setSourness(data.tastes[3].steps.length - 1);
+                  switch(data.tastes.length) {
+                    case 4:
+                      setSourness(data.tastes[3].steps.length - 1);
+                    case 3:
+                      setSweetness(data.tastes[2].steps.length - 1);
+                    case 2:
+                      setSaltiness(data.tastes[1].steps.length - 1);
+                    case 1:
+                      setSpiciness(data.tastes[0].steps.length - 1);
+                  }
                   setModalOpen(false);
                   setChecking(false);
                 }}
@@ -225,22 +231,30 @@ const SelectModal = ({
               <div className="flex flex-col items-center">
                 <p className="py-2">{data.name}</p>
                 <div className="h-20 grid grid-cols-2 gap-4">
-                  <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
-                    <span>Spiciness</span>
-                    <span>{spiciness}</span>
-                  </div>
-                  <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
-                    <span>Saltiness</span>
-                    <span>{saltiness}</span>
-                  </div>
-                  <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
-                    <span>Sweetness</span>
-                    <span>{sweetness}</span>
-                  </div>
-                  <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
-                    <span>Sourness</span>
-                    <span>{sourness}</span>
-                  </div>
+                  {spiciness ? (
+                    <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
+                      <span>Spiciness</span>
+                      <span>{spiciness}</span>
+                    </div>                  
+                  ) : ""}
+                  {saltiness ? (
+                    <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
+                      <span>Saltiness</span>
+                      <span>{saltiness}</span>
+                    </div>                  
+                  ) : ""}
+                  {sweetness ? (
+                    <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
+                      <span>Sweetness</span>
+                      <span>{sweetness}</span>
+                    </div>                  
+                  ) : ""}
+                  {sourness ? (
+                    <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
+                      <span>Sourness</span>
+                      <span>{sourness}</span>
+                    </div>
+                  ) : ""}
                 </div>
               </div>
             </div>
@@ -270,7 +284,7 @@ const SelectModal = ({
             </div>
             <p className="text-sm">Donated Points:</p>
             <p>
-              {data.price} x {portion}% = {Number(data.price) * Number(portion)}{" "}
+              {data.price} x {portion}% = {Math.floor(Number(data.price) * (Number(portion) / 100))}{" "}
               pt(s).
             </p>
           </div>
