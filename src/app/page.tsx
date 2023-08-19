@@ -52,7 +52,7 @@ export default function Home() {
         <Image
           width={320}
           height={500}
-          style={{ width: "auto", height: "100%" }}
+          style={{ width: "100%", height: "100%" }}
           src={adImg}
           alt="Promote Image"
         />
