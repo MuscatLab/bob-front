@@ -6,12 +6,22 @@ import SelectModal from "./SelectModal";
 const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const [menus, setMenus] = useState<MenuType[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [recommendMenu, setMenuBright] = useState<String[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       setMenus(await fetch("/api/getAllMenu").then((res) => res.json()));
     };
+
+    const recommendData = async () => {
+      const orderedMenu = await fetch(`/api/recommend?id=${localStorage.id}`).then((res) => res.json());
+
+      orderedMenu.forEach((order:RecommendType) => {
+        setMenuBright([...recommendMenu, order.name]);
+      });    
+    };
     getData();
+    recommendData();
   }, []);
 
   return (
@@ -20,7 +30,8 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
         {menus.map((m) => (
           <div
             key={m.id}
-            className="p-4 flex flex-col justify-center w-40 items-center"
+            className={`${recommendMenu.includes(m.name) ? "recommend ": ""}
+              p-4 m-4 flex flex-col justify-center w-40 items-center`}
           >
             <img
               src={m.image_url}

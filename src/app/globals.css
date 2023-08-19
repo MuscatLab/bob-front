@@ -41,3 +41,9 @@ body {
 .textSecondary {
   color: var(--button-secondary);
 }
+
+.recommend {
+  border: dotted 2px var(--button-secondary);
+  border-radius: 10px;
+  background: rgba(255, 214, 0, 0.3);
+}
