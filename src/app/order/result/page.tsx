@@ -3,59 +3,30 @@ import { useState } from "react";
 
 const Result = () => {
   const orderNumber = 777;
-  const status = "In Progress of Making a burger";
-  const remaining = "00:00";
-  const history = [{
-    index: 0,
-    status: "Being ordered from kiosk",
-    time: "2023-08-19 14:38:19"
-  },
-  {
-    index: 1,
-    status: "Baking a bun",
-    time: "2023-08-19 14:41:20"
-  }
-  ]
+  const donated = 4500;
+  const donationPoint = 1004520;
 
   return (
     <div className="flex bg-black justify-center items-center w-screen h-screen">
-      <div className="w-[550px] h-screen bg-white px-4 text-[#461B1B]">
-        <h1 className="text-3xl my-6 text-center">
-          Meal Preparation
-        </h1>
-        <hr className="border-2 mb-6" />
-        <p className="text-2xl">
-          Order No.<span className="text-6xl textSecondary">{orderNumber}</span>
-        </p>
-        <p className="text-2xl">
-          Status:<br />
-          {status}
-        </p>
-
-        <section id="timer" className="my-8">
-          <h2 className="text-2xl">Remaining Time(min:sec):</h2>
-          <p className="textSecondary text-6xl text-center my-4">{remaining}</p>
+      <div className="w-[550px] h-full bg-white text-[#461B1B] flex flex-col">
+        <section id="order" className="bg-white h-full mx-4">
+            <h1 className="text-4xl mt-60">
+            Thank You<span className="text-3xl block">for Purchasing!</span>
+            </h1>
+            <p className="text-3xl mt-8">
+            Your order No. is<br />
+            <span className="text-6xl textSecondary">{orderNumber}</span>.
+            </p>
         </section>
-        <section id="history">
-          <h2 className="text-2xl">Status History</h2>
-          <div className="grid grid-cols-2 gap-4 border-b-2 mt-4">
-            <p>Status</p>
-            <p>Processing time</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {
-              history.map((stat) => (
-                <>
-                  <p key={stat.index}>
-                    {stat.status}
-                  </p>
-                  <p>
-                    {stat.time}
-                  </p>
-                </>
-              ))
-            }
-          </div>
+        <section id="donate" className="bg-[#461B1B] h-full pt-20 px-4">
+            <h1 className="text-3xl text-white">
+                You donated<br />
+                <span className="text-6xl text-[#FFB9A1]">{donated.toLocaleString("en-US")}pt(s)</span>
+            </h1>
+            <p className="mt-6 text-xl text-white">
+                Your donation point is<br />
+                <span className="text-[#FFB9A1]">{donationPoint.toLocaleString("en-US")}pt(s)</span>
+            </p>
         </section>
       </div>
     </div>
