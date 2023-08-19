@@ -8,3 +8,5 @@ export async function POST(body: any) {
     
     return NextResponse.json(data);
 }
+
+export const runtime = 'edge';
