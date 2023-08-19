@@ -51,7 +51,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
           <div
             key={m.id}
             className={`${recommendMenu.includes(m.name) && "recommend"}
-              p-4 m-4 flex flex-col justify-center w-40 items-center`}
+              p-2 m-4 flex flex-col justify-center w-40 items-center`}
           >
             <img
               src={m.image_url}
