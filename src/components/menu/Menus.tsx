@@ -32,7 +32,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
               }}
             />
             <p>{m.name}</p>
-            <p className="text-[#FF4707]">₩{m.price}</p>
+            <p className="text-[#FF4707]">₩{m.price} <span className="text-[#7A7A7A]">{m.expected_time} min.</span></p>
             {modalOpen && (
               <SelectModal
                 data={m}
@@ -49,7 +49,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       </div>
       {isSelected && (
         <div className="w-full h-1/4 bg-[#FFF3B3] border-t-4 border-[#FF4707] border-dashed">
-          <p className="py-2 px-4 text-lg">Cart</p>
+          <p className="py-2 px-4 text-lg">Cart <span className="rounded-xl buttonSecondary text-white px-6">1</span> </p>
           <div className="flex">
             <div className="p-2 mx-2 p-4 pe-6 bg-slate-50">
               <p>{cart.menus.name}</p>
