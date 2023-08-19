@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { RecoilRoot } from "recoil";
 // Api
-import { getAllMenu } from "@/api/MenuApi";
 import SelectModal from "./SelectModal";
 
 const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
@@ -12,8 +11,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getAllMenu();
-      setMenus(data);
+      setMenus(await fetch("/api/getAllMenu").then((res) => res.json()));
     };
     getData();
   }, []);
@@ -52,8 +50,11 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       {isSelected && (
         <div className="w-full h-1/4 bg-[#FFF3B3] border-t-4 border-[#FF4707] border-dashed">
           <p className="py-2 px-4 text-lg">Cart</p>
-          <div className="p-2">
-            <p>{cart.menus.name}</p>
+          <div className="flex">
+            <div className="p-2 mx-2 p-4 pe-6 bg-slate-50">
+              <p>{cart.menus.name}</p>
+              <p className="textSecondary text-xl">₩ {cart.menus.price}</p>
+            </div>          
           </div>
         </div>
       )}

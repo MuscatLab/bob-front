@@ -156,6 +156,7 @@ const SelectModal = ({
                 setCart({
                   menus: {
                     name: data.name,
+                    price: data.price,
                     options: [
                       {
                         name: "Spiciness",
