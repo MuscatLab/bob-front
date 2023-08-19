@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [adImg, setAdImg] = useState("");
 
   const [id, setId] = useState("ID");
   const [password, setPassword] = useState("Password");
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     async function fetchAdImage() {
@@ -105,9 +105,9 @@ export default function Home() {
             )}
             {!isLogin ? (
               <div className="h-1/5 w-full flex flex-row">
-                <div className="w-1/2 flex justify-center items-center bg-[#343434]">
+                <Link href={"/order/menu"} className="w-1/2 flex justify-center items-center bg-[#343434]">
                   <span className="text-2xl">Guest</span>
-                </div>
+                </Link>
                 <div className="w-1/2 flex justify-center items-center bg-[#FF4707]">
                   <span
                     className="text-2xl"
