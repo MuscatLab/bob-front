@@ -46,25 +46,25 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
 
   return (
     <div className="w-full h-full flex-grow overflow-auto">
-      <div className="flex-grow h-3/4">
+      <div className="flex-grow h-3/4 overflow-wrap">
         {menus.map((m) => (
           <div
             key={m.id}
-            className={`${recommendMenu.includes(m.name) ? "recommend " : ""}
+            className={`${recommendMenu.includes(m.name) && "recommend"}
               p-4 m-4 flex flex-col justify-center w-40 items-center`}
           >
             <img
               src={m.image_url}
-              className="w-20"
+              className="w-30 cursor-pointer"
               onClick={() => {
                 setModalOpen(true);
               }}
             />
             <p>{m.name}</p>
-            <p className="text-[#FF4707]">
-              ₩{m.price}
-              <span className="text-[#7A7A7A]">{m.expected_time} min.</span>
-            </p>
+            <div className="flex flex-row gap-2">
+              <p className="text-[#FF4707]">₩{m.price}</p>
+              <span className="text-[#7A7A7A]">{m.expected_time}min.</span>
+            </div>
             {modalOpen && (
               <SelectModal
                 data={m}
