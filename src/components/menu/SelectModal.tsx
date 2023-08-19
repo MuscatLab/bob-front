@@ -3,8 +3,22 @@ import { useEffect, useState } from "react";
 import { BsFillSkipBackwardCircleFill } from "react-icons/bs";
 import { FaWindowClose } from "react-icons/fa";
 
+interface Taste {
+  id: string,
+  name: string,
+  step: Number
+}
+
+interface RecommendTaste {
+  spiciness?: Number,
+  saltiness?: Number,
+  sweetness?: Number,
+  sourness?: Number
+}
+
 const SelectModal = ({
   data,
+  recommend,
   cart,
   setCart,
   isSelected,
@@ -14,7 +28,7 @@ const SelectModal = ({
 }: any) => {
   const [checking, setChecking] = useState(false);
 
-  const [portion, setPortion] = useState(50);
+  const [portion, setPortion] = useState(recommend ? recommend.quantity : 50);
   const [isChecked, setIsChecked] = useState(false);
   
   const [spiciness, setSpiciness] 
@@ -29,6 +43,24 @@ const SelectModal = ({
   const incrementAndReset = (value: any, setter: any) => {
     setter((prevValue: number) => (prevValue >= 10 ? 1 : prevValue + 1));
   };
+  
+  const recommendTastes: RecommendTaste = {};
+  recommend.tastes.forEach((taste: Taste) => {
+    switch (taste.name) {
+      case "짠맛":
+        recommendTastes.spiciness = taste.step;
+        break;
+      case "감칠맛":
+        recommendTastes.spiciness = taste.step;
+        break;
+      case "신맛":
+        recommendTastes.sourness = taste.step;
+        break;
+      case "단맛":
+        recommendTastes.sweetness = taste.step;
+        break;
+    }
+  })
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-opacity-10 bg-blue-400">
@@ -70,7 +102,9 @@ const SelectModal = ({
                     <span>Spiciness</span>
                     <div className="text-xs">
                       <span>Recommended: </span>
-                      <span className="text-[#FF4707]">??</span>
+                      <span className="text-[#FF4707]">
+                        {recommendTastes ? recommendTastes.spiciness ? recommendTastes.spiciness.toString() : "??" : "??"}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -87,7 +121,9 @@ const SelectModal = ({
                     <span>Saltiness</span>
                     <div className="text-xs">
                       <span>Recommended: </span>
-                      <span className="text-[#FF4707]">??</span>
+                      <span className="text-[#FF4707]">
+                        {recommendTastes ? recommendTastes.saltiness ? recommendTastes.saltiness.toString() : "??" : "??"}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -104,7 +140,7 @@ const SelectModal = ({
                     <span>Sweetness</span>
                     <div className="text-xs">
                       <span>Recommended: </span>
-                      <span className="text-[#FF4707]">??</span>
+                      <span className="text-[#FF4707]">{recommendTastes ? recommendTastes.sweetness ? recommendTastes.sweetness.toString() : "??" : "??"}</span>
                     </div>
                   </div>
                 </div>              
@@ -121,7 +157,7 @@ const SelectModal = ({
                     <span>Sourness</span>
                     <div className="text-xs">
                       <span>Recommended: </span>
-                      <span className="text-[#FF4707]">??</span>
+                      <span className="text-[#FF4707]">{recommendTastes ? recommendTastes.sourness ? recommendTastes.sourness.toString() : "??" : "??"}</span>
                     </div>
                   </div>
                 </div>              
@@ -169,10 +205,10 @@ const SelectModal = ({
               <FaWindowClose
                 className="text-[#461B1B] text-2xl"
                 onClick={() => {
-                  setSpiciness(data.tastes[0].steps.length);
-                  setSaltiness(data.tastes[1].steps.length);
-                  setSweetness(data.tastes[2].steps.length);
-                  setSourness(data.tastes[3].steps.length);
+                  setSpiciness(data.tastes[0].steps.length - 1);
+                  setSaltiness(data.tastes[1].steps.length - 1);
+                  setSweetness(data.tastes[2].steps.length - 1);
+                  setSourness(data.tastes[3].steps.length - 1);
                   setModalOpen(false);
                   setChecking(false);
                 }}

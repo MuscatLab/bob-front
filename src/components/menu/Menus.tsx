@@ -7,20 +7,33 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const [menus, setMenus] = useState<MenuType[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [recommendMenu, setMenuBright] = useState<String[]>([]);
+  const [recommendTaste, setRecTaste] = useState<{ [key: string]: string|Number|Object[]|Object}>();
 
   useEffect(() => {
     const getData = async () => {
       setMenus(await fetch("/api/getAllMenu").then((res) => res.json()));
     };
 
+    getData();
+  }, []);
+
+  useEffect(() => {
     const recommendData = async () => {
       const orderedMenu = await fetch(`/api/recommend?id=${localStorage.id}`).then((res) => res.json());
+      const taste: { [key: string]: Object} = {};
+      const recommend = [];
 
-      orderedMenu.forEach((order:RecommendType) => {
-        setMenuBright([...recommendMenu, order.name]);
-      });    
+      for (let i = 0; i < orderedMenu.length; i++) {
+        recommend.push(orderedMenu[i].name);
+       
+        taste[orderedMenu[i].name] = {
+          quantity: orderedMenu[i].quantity,
+          tastes: orderedMenu[i].tastes
+        };
+      }
+      setRecTaste(taste);
+      setMenuBright(recommend);
     };
-    getData();
     recommendData();
   }, []);
 
@@ -45,6 +58,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
             {modalOpen && (
               <SelectModal
                 data={m}
+                recommend={recommendTaste ? recommendTaste[m.name] ? recommendTaste[m.name] : undefined : undefined}
                 cart={cart}
                 setCart={setCart}
                 isSelected={isSelected}
