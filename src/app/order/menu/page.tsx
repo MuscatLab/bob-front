@@ -35,7 +35,7 @@ const Menu = () => {
 
   return (
     <div className="flex bg-black justify-center items-center w-screen h-screen">
-      <div className="w-[600px] h-screen bg-white">
+      <div className="w-[550px] h-screen bg-white">
         <TopBanner />
         <div className="w-full h-5/6 flex flex-col">
           {/* <CategoryBar /> */}
