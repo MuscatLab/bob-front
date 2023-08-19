@@ -3,6 +3,9 @@ import { NextResponse } from "next/server";
 export async function POST(body: any) {
   const res = await fetch(`${process.env.BASE_URL}/members/sign-in`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: body,
   });
   const data = await res.json();
