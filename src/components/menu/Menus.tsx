@@ -52,7 +52,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
             <div className="p-2 mx-2 p-4 pe-6 bg-slate-50">
               <p>{cart.menus.name}</p>
               <p className="textSecondary text-xl">₩ {cart.menus.price}</p>
-            </div>          
+            </div>
           </div>
         </div>
       )}
