@@ -85,22 +85,22 @@ export default function Home() {
                         <input
                           type="text"
                           name="id"
-                          value={id}
+                          placeholder={id}
                           onChange={(e) => {
                             setId(e.target.value);
                           }}
-                          className="w-[12rem] h-8 border-b-2 border-red-800 bg-red-400 bg-opacity-20 p-1 text-[#461B1B]"
+                          className="w-[12rem] h-8 border-b-2 border-red-800 bg-red-400 bg-opacity-20 p-1 placeholder:text-[#461B1B]"
                         />
                       </div>
                       <div>
                         <input
                           type="password"
                           name="password"
-                          value={password}
+                          placeholder={password}
                           onChange={(e) => {
                             setPassword(e.target.value);
                           }}
-                          className="w-[12rem] h-8 border-b-2 border-red-800 bg-red-400 bg-opacity-20 p-1 text-[#461B1B]"
+                          className="w-[12rem] h-8 border-b-2 border-red-800 bg-red-400 bg-opacity-20 p-1 placeholder:text-[#461B1B]"
                         />
                       </div>
                     </div>
