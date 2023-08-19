@@ -4,8 +4,15 @@ const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
 
   const postOrder = async () => {
     const data = await fetch(`/api/postCard`, {
-      body: cart
-    });
+        method: "POST",
+        body: JSON.stringify({
+          order: cart,
+          id: localStorage.getItem("id")
+        })
+      }
+    );
+
+    
   };
 
   return (
