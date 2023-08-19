@@ -25,6 +25,9 @@ export default function Home() {
   const signIn = async () => {
     const res = await fetch(`/api/login`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },  
       body: JSON.stringify({
         email: id,
         password: password,
@@ -32,7 +35,6 @@ export default function Home() {
     });
 
     const data = await res.json();
-    console.log(data);
     if (res.ok) {
       localStorage.setItem("id", data.id);
       console.log(data.id);
