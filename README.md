@@ -9,13 +9,21 @@
 #### Folder Structure
 
 **src/app**
-
+- api
+  - getAllMenu : Fetch all menus from API server.
+  - postCard : Trying to pay with user ID and menu selection
 - order
   - menu : Show menus and recommended menu from previous user data
-  - payment : Pay as credit card
-  - result : Generate QR Code and show order number
+  - result : Notice order number and show status of order
 
-- status : Check order status and history by QR code
-- `page.tsx` in **src/app** : Check if credit card inserted / Advertise new/promotion products
+- `page.tsx` in **src/app** : Check if login and Advertise new/promotion products
 
 ### Open-source License
+
+- [React.js](https://react.dev): MIT License
+- [Next.js](https://nextjs.org): MIT License
+- [Tailwind CSS](https://tailwindcss.com): MIT License
+- [PostCSS](https://postcss.org): MIT License
+- [TypeScript](https://www.typescriptlang.org/): Apache 2.0 License
+- [React Icons](https://react-icons.github.io/react-icons/): [See License List at official repository](https://github.com/react-icons/react-icons)
+- [ESLint](https://eslint.org/): MIT License
