@@ -33,3 +33,11 @@ body {
 .buttonSecondary {
   background: var(--button-secondary);
 }
+
+.textPrimary {
+  color: var(--button-primary);
+}
+
+.textSecondary {
+  color: var(--button-secondary);
+}
