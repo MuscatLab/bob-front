@@ -59,7 +59,7 @@ export default function Home() {
         <div className="flex justify-center items-center gap-2 w-full p-4 buttonPrimary">
           <PiBowlFoodFill className="text-4xl" />
           <span
-            className="text-3xl"
+            className="text-3xl cursor-pointer"
             onClick={() => {
               setIsModalOpen(true);
             }}
@@ -122,7 +122,7 @@ export default function Home() {
                 </Link>
                 <div className="w-1/2 flex justify-center items-center bg-[#FF4707]">
                   <span
-                    className="text-2xl"
+                    className="text-2xl cursor-pointer"
                     onClick={() => {
                       signIn();
                       setId("ID");
@@ -137,7 +137,7 @@ export default function Home() {
               <div className="h-1/5 w-full flex flex-row">
                 <div className="w-1/2 flex justify-center items-center bg-[#343434]">
                   <span
-                    className="text-2xl"
+                    className="text-2xl cursor-pointer"
                     onClick={() => {
                       setIsModalOpen(false);
                       setIsLogin(false);
@@ -152,7 +152,7 @@ export default function Home() {
                   className="w-1/2 flex justify-center items-center bg-[#FF4707]"
                 >
                   <span
-                    className="text-2xl"
+                    className="text-2xl cursor-pointer"
                     onClick={() => {
                       setIsModalOpen(false);
                       setIsLogin(false);

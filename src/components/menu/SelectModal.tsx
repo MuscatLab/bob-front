@@ -60,7 +60,7 @@ const SelectModal = ({
           <div className="w-full h-16 flex flex-row border justify-between items-center">
             <div className="w-1/5 flex justify-center">
               <FaWindowClose
-                className="text-[#461B1B] text-2xl"
+                className="text-[#461B1B] text-2xl cursor-pointer"
                 onClick={() => {
                   setCart();
                   setModalOpen(false);
@@ -81,13 +81,13 @@ const SelectModal = ({
             className="flex flex-col justify-center flex-grow"
           >
             <p className="text-[#461B1B] text-2xl text-center mt-2">
-              Change Taste{" "}
+              Change Taste
             </p>
             <div className="flex-grow grid grid-cols-2 gap-4">
-              {spiciness ? (
+              {spiciness && (
                 <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
                   <div
-                    className="w-8 h-8 bg-[#FFE9E9] flex justify-center items-center"
+                    className="w-8 h-8 bg-[#FFE9E9] flex justify-center items-center cursor-pointer"
                     onClick={() => incrementAndReset(spiciness, setSpiciness)}
                   >
                     <span>{spiciness}</span>
@@ -106,13 +106,11 @@ const SelectModal = ({
                     </div>
                   </div>
                 </div>
-              ) : (
-                ""
               )}
-              {saltiness ? (
+              {saltiness && (
                 <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
                   <div
-                    className="w-8 h-8 bg-[#C7F6FE] flex justify-center items-center"
+                    className="w-8 h-8 bg-[#C7F6FE] flex justify-center items-center cursor-pointer"
                     onClick={() => incrementAndReset(saltiness, setSaltiness)}
                   >
                     <span>{saltiness}</span>
@@ -131,13 +129,11 @@ const SelectModal = ({
                     </div>
                   </div>
                 </div>
-              ) : (
-                ""
               )}
-              {sweetness ? (
+              {sweetness && (
                 <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
                   <div
-                    className="w-8 h-8 bg-[#D8FEC8] flex justify-center items-center"
+                    className="w-8 h-8 bg-[#D8FEC8] flex justify-center items-center cursor-pointer"
                     onClick={() => incrementAndReset(sweetness, setSweetness)}
                   >
                     <span>{sweetness}</span>
@@ -147,22 +143,18 @@ const SelectModal = ({
                     <div className="text-xs">
                       <span>Recommended: </span>
                       <span className="text-[#FF4707]">
-                        {recommendTastes
-                          ? recommendTastes.sweetness
-                            ? recommendTastes.sweetness.toString()
-                            : "??"
+                        {recommendTastes && recommendTastes.sweetness
+                          ? recommendTastes.sweetness.toString()
                           : "??"}
                       </span>
                     </div>
                   </div>
                 </div>
-              ) : (
-                ""
               )}
               {sourness ? (
                 <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
                   <div
-                    className="w-8 h-8 bg-[#FEF9C7] flex justify-center items-center"
+                    className="w-8 h-8 bg-[#FEF9C7] flex justify-center items-center cursor-pointer"
                     onClick={() => incrementAndReset(sourness, setSourness)}
                   >
                     <span>{sourness}</span>
@@ -172,10 +164,8 @@ const SelectModal = ({
                     <div className="text-xs">
                       <span>Recommended: </span>
                       <span className="text-[#FF4707]">
-                        {recommendTastes
-                          ? recommendTastes.sourness
-                            ? recommendTastes.sourness.toString()
-                            : "??"
+                        {recommendTastes && recommendTastes.sourness
+                          ? recommendTastes.sourness.toString()
                           : "??"}
                       </span>
                     </div>
@@ -211,7 +201,7 @@ const SelectModal = ({
           </div>
           <div className="h-16 bg-[#FF4707] flex justify-center items-center">
             <p
-              className="text-white text-2xl"
+              className="text-white text-2xl cursor-pointer"
               onClick={() => {
                 setChecking(true);
               }}
@@ -225,9 +215,9 @@ const SelectModal = ({
           <div className="w-full h-16 flex flex-row border justify-between items-center">
             <div className="w-1/5 flex justify-center">
               <FaWindowClose
-                className="text-[#461B1B] text-2xl"
+                className="text-[#461B1B] text-2xl cursor-pointer"
                 onClick={() => {
-                  switch(data.tastes.length) {
+                  switch (data.tastes.length) {
                     case 4:
                       setSourness(data.tastes[3].steps.length - 1);
                     case 3:
@@ -253,30 +243,30 @@ const SelectModal = ({
               <div className="flex flex-col items-center">
                 <p className="py-2">{data.name}</p>
                 <div className="h-20 grid grid-cols-2 gap-4">
-                  {spiciness ? (
+                  {spiciness && (
                     <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
                       <span>Spiciness</span>
                       <span>{spiciness}</span>
-                    </div>                  
-                  ) : ""}
-                  {saltiness ? (
+                    </div>
+                  )}
+                  {saltiness && (
                     <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
                       <span>Saltiness</span>
                       <span>{saltiness}</span>
-                    </div>                  
-                  ) : ""}
-                  {sweetness ? (
+                    </div>
+                  )}
+                  {sweetness && (
                     <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
                       <span>Sweetness</span>
                       <span>{sweetness}</span>
-                    </div>                  
-                  ) : ""}
-                  {sourness ? (
+                    </div>
+                  )}
+                  {sourness && (
                     <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
                       <span>Sourness</span>
                       <span>{sourness}</span>
                     </div>
-                  ) : ""}
+                  )}
                 </div>
               </div>
             </div>
@@ -306,13 +296,13 @@ const SelectModal = ({
             </div>
             <p className="text-sm">Donated Points:</p>
             <p>
-              {data.price} x {portion}% = {Math.floor(Number(data.price) * (Number(portion) / 100))}{" "}
-              pt(s).
+              {data.price} x {portion}% ={" "}
+              {Math.floor(Number(data.price) * (Number(portion) / 100))} pt(s).
             </p>
           </div>
           <div className="h-16 bg-[#FF4707] flex justify-center items-center">
             <p
-              className="text-white text-2xl"
+              className="text-white text-2xl cursor-pointer"
               onClick={() => {
                 setCart({
                   menus: {

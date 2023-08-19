@@ -55,7 +55,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
           >
             <img
               src={m.image_url}
-              className="w-30"
+              className="w-30 cursor-pointer"
               onClick={() => {
                 setModalOpen(true);
               }}
