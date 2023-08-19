@@ -15,7 +15,7 @@ export default function Home() {
     async function fetchAdImage() {
       const res = await fetch(`${process.env.BASE_URL}/recommends/images`);
       const img = await res.json();
-      setAdImg(img);
+      setAdImg(img[0].url);
     }
 
     fetchAdImage();
@@ -38,13 +38,13 @@ export default function Home() {
   return (
     <main className="w-[550px] flex flex-col items-center justify-between min-h-screen bg-white">
       <section id="advertisement" className="w-full h-full">
-        {/* <Image
+        <Image
           width={640}
           height={1000}
           style={{ width: "auto", height: "100%" }}
-          src={adImg[0].url}
+          src={adImg}
           alt="Promote Image"
-        /> */}
+        />
       </section>
       <section id="order" className="flex w-full text-slate-50">
         <div className="flex justify-center gap-5 w-full p-4 buttonPrimary">

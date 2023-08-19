@@ -12,23 +12,23 @@ const SelectModal = ({
   modalOpen,
   setModalOpen,
 }: any) => {
-  const [spiciness, setSpiciness] = useState(data.options[0].max_step);
-  const [saltiness, setSaltiness] = useState(data.options[1].max_step);
-  const [sweetness, setSweetness] = useState(data.options[2].max_step);
-  const [sourness, setSourness] = useState(data.options[3].max_step);
-
   const [checking, setChecking] = useState(false);
 
   const [portion, setPortion] = useState(50);
   const [isChecked, setIsChecked] = useState(false);
+  
+  const [spiciness, setSpiciness] 
+    = useState(data.tastes.length >= 0 ? data.tastes[0].steps.length : undefined);
+  const [saltiness, setSaltiness] 
+    = useState(data.tastes.length > 1 ? data.tastes[1].steps.length : undefined);
+  const [sweetness, setSweetness]
+    = useState(data.tastes.length > 2 ? data.tastes[2].steps.length : undefined)
+  const [sourness, setSourness]
+    = useState(data.tastes.length > 3 ? data.tastes[3].steps.length : undefined);
+
   const incrementAndReset = (value: any, setter: any) => {
     setter((prevValue: number) => (prevValue >= 10 ? 1 : prevValue + 1));
   };
-
-  useEffect(() => {
-    console.log(data);
-    console.log("??");
-  });
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-opacity-10 bg-blue-400">
@@ -53,73 +53,81 @@ const SelectModal = ({
             <p className="text-[#461B1B] text-lg mx-1">Back to the menu</p>
             <BsFillSkipBackwardCircleFill className="text-[#461B1B] text-xl mx-1" />
           </div>
-          <div className="flex flex-col justify-center flex-grow">
+          <section id="changeTaste" className="flex flex-col justify-center flex-grow">
             <p className="text-[#461B1B] text-2xl text-center mt-2">
               Change Taste{" "}
             </p>
             <div className="flex-grow grid grid-cols-2 gap-4">
-              <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
-                <div
-                  className="w-8 h-8 bg-[#FFE9E9] flex justify-center items-center"
-                  onClick={() => incrementAndReset(spiciness, setSpiciness)}
-                >
-                  <span>{spiciness}</span>
-                </div>
-                <div>
-                  <span>Spiciness</span>
-                  <div className="text-xs">
-                    <span>Recommended: </span>
-                    <span className="text-[#FF4707]">??</span>
+              {spiciness ? (
+                <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
+                  <div
+                    className="w-8 h-8 bg-[#FFE9E9] flex justify-center items-center"
+                    onClick={() => incrementAndReset(spiciness, setSpiciness)}
+                  >
+                    <span>{spiciness}</span>
+                  </div>
+                  <div>
+                    <span>Spiciness</span>
+                    <div className="text-xs">
+                      <span>Recommended: </span>
+                      <span className="text-[#FF4707]">??</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
-                <div
-                  className="w-8 h-8 bg-[#C7F6FE] flex justify-center items-center"
-                  onClick={() => incrementAndReset(saltiness, setSaltiness)}
-                >
-                  <span>{saltiness}</span>
-                </div>
-                <div>
-                  <span>Saltiness</span>
-                  <div className="text-xs">
-                    <span>Recommended: </span>
-                    <span className="text-[#FF4707]">??</span>
+              ) : ""}
+              {saltiness ? (
+                <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
+                  <div
+                    className="w-8 h-8 bg-[#C7F6FE] flex justify-center items-center"
+                    onClick={() => incrementAndReset(saltiness, setSaltiness)}
+                  >
+                    <span>{saltiness}</span>
+                  </div>
+                  <div>
+                    <span>Saltiness</span>
+                    <div className="text-xs">
+                      <span>Recommended: </span>
+                      <span className="text-[#FF4707]">??</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
-                <div
-                  className="w-8 h-8 bg-[#D8FEC8] flex justify-center items-center"
-                  onClick={() => incrementAndReset(sweetness, setSweetness)}
-                >
-                  <span>{sweetness}</span>
-                </div>
-                <div>
-                  <span>Sweetness</span>
-                  <div className="text-xs">
-                    <span>Recommended: </span>
-                    <span className="text-[#FF4707]">??</span>
+              ) : ""}
+              {sweetness ? (
+                <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
+                  <div
+                    className="w-8 h-8 bg-[#D8FEC8] flex justify-center items-center"
+                    onClick={() => incrementAndReset(sweetness, setSweetness)}
+                  >
+                    <span>{sweetness}</span>
                   </div>
-                </div>
-              </div>
-              <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
-                <div
-                  className="w-8 h-8 bg-[#FEF9C7] flex justify-center items-center"
-                  onClick={() => incrementAndReset(sourness, setSourness)}
-                >
-                  <span>{sourness}</span>
-                </div>
-                <div>
-                  <span>Sourness</span>
-                  <div className="text-xs">
-                    <span>Recommended: </span>
-                    <span className="text-[#FF4707]">??</span>
+                  <div>
+                    <span>Sweetness</span>
+                    <div className="text-xs">
+                      <span>Recommended: </span>
+                      <span className="text-[#FF4707]">??</span>
+                    </div>
                   </div>
-                </div>
+                </div>              
+              ) : ""}
+              {sourness ? (
+                <div className="px-8 flex justify-around items-center text-lg text-[#461B1B]">
+                  <div
+                    className="w-8 h-8 bg-[#FEF9C7] flex justify-center items-center"
+                    onClick={() => incrementAndReset(sourness, setSourness)}
+                  >
+                    <span>{sourness}</span>
+                  </div>
+                  <div>
+                    <span>Sourness</span>
+                    <div className="text-xs">
+                      <span>Recommended: </span>
+                      <span className="text-[#FF4707]">??</span>
+                    </div>
+                  </div>
+                </div>              
+              ) : ""}
               </div>
-            </div>
-          </div>
+          </section>
           <div className="px-6 py-2 h-[8rem] border-t-2 flex flex-col justify-center items-center">
             <p className="text-[#461B1B] text-2xl">Adjust Portion</p>
             <div className="w-4/5 flex justify-between">
@@ -161,10 +169,10 @@ const SelectModal = ({
               <FaWindowClose
                 className="text-[#461B1B] text-2xl"
                 onClick={() => {
-                  setSpiciness(data.options[0].max_step);
-                  setSaltiness(data.options[1].max_step);
-                  setSweetness(data.options[2].max_step);
-                  setSourness(data.options[3].max_step);
+                  setSpiciness(data.tastes[0].steps.length);
+                  setSaltiness(data.tastes[1].steps.length);
+                  setSweetness(data.tastes[2].steps.length);
+                  setSourness(data.tastes[3].steps.length);
                   setModalOpen(false);
                   setChecking(false);
                 }}
