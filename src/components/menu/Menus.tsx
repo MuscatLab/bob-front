@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { RecoilRoot } from "recoil";
 // Api
 import SelectModal from "./SelectModal";
 
