@@ -1,9 +1,9 @@
-import ChooseOrderType from "@/components/main/ChooseOrderType";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home() {
   
-  const res = await fetch("http://api.muscatlab.com/recommends/images");
+  const res = await fetch(`${process.env.BASE_URL}/recommends/images`);
   const adImg = await res.json();
 
   return (
@@ -17,7 +17,16 @@ export default async function Home() {
           alt="Promote Image"
         />
       </section>
-      <ChooseOrderType />
+      <section id="order" className="flex w-full text-slate-50">
+        <Link className="flex justify-center gap-5 w-full p-4 buttonPrimary" href="/order/login?type=togo">
+          <Image src="/togo.png" alt="TO GO" width={48} height={48} />
+          <span className="text-3xl py-2">TO GO</span>
+        </Link>
+        <Link className="flex justify-center gap-5 w-full p-4 buttonSecondary" href="/order/login?type=forhere">
+          <Image src="/forhere.png" alt="forhere" width={48} height={48} />
+          <span className="text-3xl py-2">FOR HERE</span>
+        </Link>
+      </section>
     </main>
   );
 }
