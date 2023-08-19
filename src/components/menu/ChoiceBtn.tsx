@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const postOrder = async () => {
-    const data = await fetch(`/api/postCard`, {
+    const data = await fetch(`/api/postCart`, {
       method: "POST",
       body: JSON.stringify({
         order: cart,
