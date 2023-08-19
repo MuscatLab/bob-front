@@ -43,7 +43,7 @@ const Menu = () => {
             cart={cart}
             setCart={setCart}
             isSelected={isSelected}
-            setIsSelected={setIsSelected}
+            setIsSelected={setIsSelected} 
           />
           <ChoiceBtn
             cart={cart}
@@ -51,7 +51,6 @@ const Menu = () => {
             isSelected={isSelected}
             setIsSelected={setIsSelected}
           />
-          <ExtraBtn />
         </div>
       </div>
     </div>
