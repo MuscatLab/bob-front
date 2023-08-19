@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-[550px] flex flex-col items-center justify-between min-h-screen">
+    <main className="w-[550px] flex flex-col items-center justify-between min-h-screen bg-white">
       <section id="advertisement" className="w-full h-full">
         {/* <Image
           width={640}
