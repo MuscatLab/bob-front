@@ -9,13 +9,13 @@ const ExtraBtn = () => {
         <div className="bg-white rounded-full mx-3 p-2">
           <BsTicketPerforated className="text-2xl text-black" />
         </div>
-        <span className="text-2xl">Coupon</span>
+        <span className="text-2xl text-white">Coupon</span>
       </div>
       <div className="flex flex-row items-center px-8">
         <div className="bg-white rounded-full mx-3 p-2">
           <BiExit className="text-2xl text-black" />
         </div>
-        <span className="text-2xl">Exit</span>
+        <span className="text-2xl text-white">Exit</span>
       </div>
     </div>
   );
