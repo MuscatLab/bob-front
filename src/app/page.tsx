@@ -29,9 +29,9 @@ export default function Home() {
         password: password,
       }),
     });
+    const data = await res.json();
 
-    console.log(res);
-    localStorage.setItem("id", res.id);
+    localStorage.setItem("id", data.id);
     setIsLogin(true);
   };
 
