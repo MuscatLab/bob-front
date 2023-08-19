@@ -24,6 +24,9 @@ export default function Home() {
   const signIn = async () => {
     const res = await fetch(`${process.env.BASE_URL}/members/sign-in`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         email: id,
         password: password,
@@ -31,8 +34,12 @@ export default function Home() {
     });
     const data = await res.json();
 
-    localStorage.setItem("id", data.id);
-    setIsLogin(true);
+    if (res.ok) {
+      localStorage.setItem("id", data.id);
+      setIsLogin(true);  
+    } else {
+      alert("로그인 정보를 다시 확인해주세요!");
+    }
   };
 
   return (
