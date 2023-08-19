@@ -46,8 +46,8 @@ export default function Home() {
     <main className="w-[550px] flex flex-col items-center justify-between min-h-screen bg-white">
       <section id="advertisement" className="w-full h-full">
         <Image
-          width={640}
-          height={1000}
+          width={320}
+          height={500}
           style={{ width: "auto", height: "100%" }}
           src={adImg}
           alt="Promote Image"
