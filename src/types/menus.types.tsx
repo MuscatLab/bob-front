@@ -14,3 +14,16 @@ type MenuOptionType = {
   max_step: number;
   high_light: boolean;
 };
+
+type Taste = {
+  id: string;
+  name: string;
+  step: Number;
+};
+
+type RecommendTaste = {
+  spiciness?: Number;
+  saltiness?: Number;
+  sweetness?: Number;
+  sourness?: Number;
+};

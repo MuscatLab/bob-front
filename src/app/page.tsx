@@ -12,31 +12,31 @@ export default function Home() {
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    async function fetchAdImage() {
-      const res = await fetch(`${process.env.BASE_URL}/recommends/images`);
+    const fetchAdImage = async () => {
+      const res = await fetch(`/api/getMainImg`);
+      console.log(res.url);
       const img = await res.json();
       setAdImg(img[0].url);
-    }
+    };
 
     fetchAdImage();
   }, []);
 
   const signIn = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/members/sign-in`, {
+    const res = await fetch(`/api/login`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify({
         email: id,
         password: password,
       }),
     });
-    const data = await res.json();
 
+    const data = await res.json();
+    console.log(data);
     if (res.ok) {
       localStorage.setItem("id", data.id);
-      setIsLogin(true);  
+      console.log(data.id);
+      setIsLogin(true);
     } else {
       alert("로그인 정보를 다시 확인해주세요!");
     }
@@ -112,7 +112,10 @@ export default function Home() {
             )}
             {!isLogin ? (
               <div className="h-1/5 w-full flex flex-row">
-                <Link href={"/order/menu"} className="w-1/2 flex justify-center items-center bg-[#343434]">
+                <Link
+                  href={"/order/menu"}
+                  className="w-1/2 flex justify-center items-center bg-[#343434]"
+                >
                   <span className="text-2xl">Guest</span>
                 </Link>
                 <div className="w-1/2 flex justify-center items-center bg-[#FF4707]">

@@ -7,7 +7,9 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const [menus, setMenus] = useState<MenuType[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [recommendMenu, setMenuBright] = useState<String[]>([]);
-  const [recommendTaste, setRecTaste] = useState<{ [key: string]: string|Number|Object[]|Object}>();
+  const [recommendTaste, setRecTaste] = useState<{
+    [key: string]: string | Number | Object[] | Object;
+  }>();
 
   useEffect(() => {
     const getData = async () => {
@@ -18,17 +20,22 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   }, []);
 
   useEffect(() => {
+    const id = localStorage.getItem("id");
+    console.log(id);
     const recommendData = async () => {
-      const orderedMenu = await fetch(`/api/recommend?id=${localStorage.id}`).then((res) => res.json());
-      const taste: { [key: string]: Object} = {};
+      const orderedMenu = await fetch(`/api/recommend?id=${id}`).then((res) =>
+        res.json()
+      );
+      console.log(orderedMenu);
+      const taste: { [key: string]: Object } = {};
       const recommend = [];
 
       for (let i = 0; i < orderedMenu.length; i++) {
         recommend.push(orderedMenu[i].name);
-       
+
         taste[orderedMenu[i].name] = {
           quantity: orderedMenu[i].quantity,
-          tastes: orderedMenu[i].tastes
+          tastes: orderedMenu[i].tastes,
         };
       }
       setRecTaste(taste);
@@ -43,7 +50,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
         {menus.map((m) => (
           <div
             key={m.id}
-            className={`${recommendMenu.includes(m.name) ? "recommend ": ""}
+            className={`${recommendMenu.includes(m.name) ? "recommend " : ""}
               p-4 m-4 flex flex-col justify-center w-40 items-center`}
           >
             <img
@@ -54,11 +61,14 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
               }}
             />
             <p>{m.name}</p>
-            <p className="text-[#FF4707]">₩{m.price} <span className="text-[#7A7A7A]">{m.expected_time} min.</span></p>
+            <p className="text-[#FF4707]">
+              ₩{m.price}
+              <span className="text-[#7A7A7A]">{m.expected_time} min.</span>
+            </p>
             {modalOpen && (
               <SelectModal
                 data={m}
-                recommend={recommendTaste ? recommendTaste[m.name] ? recommendTaste[m.name] : undefined : undefined}
+                recommend={recommendTaste && recommendTaste[m.name]}
                 cart={cart}
                 setCart={setCart}
                 isSelected={isSelected}
@@ -72,7 +82,12 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       </div>
       {isSelected && (
         <div className="w-full h-1/4 bg-[#FFF3B3] border-t-4 border-[#FF4707] border-dashed">
-          <p className="py-2 px-4 text-lg">Cart <span className="rounded-xl buttonSecondary text-white px-6">1</span> </p>
+          <p className="py-2 px-4 text-lg">
+            Cart
+            <span className="rounded-xl buttonSecondary text-white px-6">
+              1
+            </span>
+          </p>
           <div className="flex">
             <div className="p-2 mx-2 p-4 pe-6 bg-slate-50">
               <p>{cart.menus.name}</p>
