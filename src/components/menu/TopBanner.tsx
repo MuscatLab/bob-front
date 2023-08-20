@@ -1,6 +1,6 @@
 const TopBanner = () => {
   return (
-    <div className="w-full h-1/6 flex-shrink-0 bg-gradient-to-r from-red-700 to-black flex items-center pl-3 justify-between">
+    <div className="w-full h-1/6 flex-shrink-0 bg-gradient-to-r from-red-700 to-black flex items-end pl-3 justify-between">
       <div className="px-4">
         <p
           className="text-3xl text-white"
@@ -8,7 +8,7 @@ const TopBanner = () => {
         >
           Emm...
         </p>
-        <div className="flex items-center">
+        <div className="flex items-center mb-6">
           <span
             className="text-white text-4xl font-normal"
             style={{ textShadow: "0px 8px 15px rgba(0, 0, 0, 0.70)" }}
@@ -29,7 +29,9 @@ const TopBanner = () => {
           </span>
         </div>
       </div>
-      <img src="/CupRice.png" className="w-[9.9rem]" />
+      <div className="flex items-end">
+        <img src="/CupRice.png" className="w-[9rem]" />
+      </div>
     </div>
   );
 };
