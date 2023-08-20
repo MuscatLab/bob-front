@@ -2,6 +2,9 @@ import { useState } from "react";
 // Assets
 import { BsFillSkipBackwardCircleFill } from "react-icons/bs";
 import { FaWindowClose } from "react-icons/fa";
+import { PiPottedPlantLight } from "react-icons/pi";
+
+import "../../app/globals.css";
 
 const SelectModal = ({
   data,
@@ -36,22 +39,23 @@ const SelectModal = ({
   };
 
   const recommendTastes: RecommendTaste = {};
-  recommend.tastes.forEach((taste: Taste) => {
-    switch (taste.name) {
-      case "짠맛":
-        recommendTastes.spiciness = taste.step;
-        break;
-      case "감칠맛":
-        recommendTastes.spiciness = taste.step;
-        break;
-      case "신맛":
-        recommendTastes.sourness = taste.step;
-        break;
-      case "단맛":
-        recommendTastes.sweetness = taste.step;
-        break;
-    }
-  });
+  recommend &&
+    recommend.tastes.forEach((taste: Taste) => {
+      switch (taste.name) {
+        case "짠맛":
+          recommendTastes.spiciness = taste.step;
+          break;
+        case "감칠맛":
+          recommendTastes.spiciness = taste.step;
+          break;
+        case "신맛":
+          recommendTastes.sourness = taste.step;
+          break;
+        case "단맛":
+          recommendTastes.sweetness = taste.step;
+          break;
+      }
+    });
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-opacity-10 bg-blue-400">
@@ -239,9 +243,9 @@ const SelectModal = ({
           </div>
           <div className="flex-grow ">
             <div className="w-full h-1/2 flex flex-row p-6">
-              <img src={data.image_url} className="w-24 h-24" />
+              <img src={data.image_url} className="h-24" />
               <div className="flex flex-col items-center">
-                <p className="py-2">{data.name}</p>
+                <p className="py-2 text-[#461B1B]">{data.name}</p>
                 <div className="h-20 grid grid-cols-2 gap-4">
                   {spiciness && (
                     <div className="px-6 flex justify-around items-center text-md text-[#461B1B]">
@@ -280,25 +284,36 @@ const SelectModal = ({
               <div className="flex items-center mr-4">
                 <input
                   checked={isChecked}
-                  id="checkbox"
+                  id="checkbox1"
                   type="checkbox"
                   onChange={() => {
                     setIsChecked(!isChecked);
                   }}
-                  className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 mr-2"
                 />
                 <label
-                  htmlFor="checkbox"
-                  className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                />
+                  htmlFor="checkbox1"
+                  className="text-sm font-medium text-gray-900 dark:text-gray-300 mr-2"
+                >
+                  {isChecked && (
+                    <PiPottedPlantLight className="text-2xl bg-[#057042] text-white" />
+                  )}
+                </label>
                 <p>Donate?</p>
               </div>
             </div>
-            <p className="text-sm">Donated Points:</p>
-            <p>
-              {data.price} x {100 - Number(portion)}% ={" "}
-              {Math.floor(Number(data.price) * ((100 - Number(portion)) / 100))} pt(s).
-            </p>
+            <p className="text-sm mt-2">Donated Points:</p>
+            <div className="flex flex-row ">
+              <p>
+                {data.price} x {100 - Number(portion)}% ={" "}
+              </p>
+              <p className="text-[#057042] ml-2">
+                {Math.floor(
+                  Number(data.price) * ((100 - Number(portion)) / 100)
+                )}{" "}
+                pt(s).
+              </p>
+            </div>
           </div>
           <div className="h-16 bg-[#FF4707] flex justify-center items-center">
             <p
