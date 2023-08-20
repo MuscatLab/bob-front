@@ -1,10 +1,12 @@
 // Components
 import { useState } from "react";
 
-const Result = () => {
-  const orderNumber = 777;
-  const donated = 4500;
-  const donationPoint = 1004520;
+const Result = ( { searchParams } : {
+  searchParams: { [key: string]: string | string[] | undefined };
+} ) => {
+  const orderNumber = searchParams["ticket"] ?? 777;
+  const donated = searchParams["dnow"] ?? 5000;
+  const donationPoint = searchParams["tdpoint"] ?? 102049;
 
   return (
     <div className="flex bg-black justify-center items-center w-screen h-screen">

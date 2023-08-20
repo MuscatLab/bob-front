@@ -1,6 +1,8 @@
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
+  const router = useRouter();
   const postOrder = async () => {
     const data = await fetch(`/api/postCart`, {
       method: "POST",
@@ -9,6 +11,12 @@ const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
         id: localStorage.getItem("id"),
       }),
     });
+    const result = await data.json();
+
+    router.push(`/order/result?ticket=${result["ticket_number"]}
+      &dnow=${result["donation_amount"]}
+      &tdpoint=${result["total_point_amount"]}
+    `);
   };
 
   return (
@@ -21,10 +29,7 @@ const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       </Link>
       <div
         className="w-1/2 h-full bg-[#FF4707] flex justify-center items-center text-3xl text-white cursor-pointer"
-        onClick={() => {
-          postOrder();
-        }}
-      >
+        onClick={async() => {await postOrder()}}>
         Order
       </div>
     </div>

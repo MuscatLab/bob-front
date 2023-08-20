@@ -21,7 +21,6 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
 
   useEffect(() => {
     const id = localStorage.getItem("id");
-    console.log(id);
     const recommendData = async () => {
       const orderedMenu = await fetch(`/api/recommend?id=${id}`).then((res) =>
         res.json()

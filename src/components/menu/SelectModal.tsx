@@ -13,6 +13,7 @@ const SelectModal = ({
   modalOpen,
   setModalOpen,
 }: any) => {
+
   const [checking, setChecking] = useState(false);
 
   const [portion, setPortion] = useState(recommend ? recommend.quantity : 50);
@@ -309,22 +310,22 @@ const SelectModal = ({
                     name: data.name,
                     quantity: portion,
                     price: data.price,
-                    options: [
+                    tastes: [
                       {
-                        name: "Spiciness",
-                        step: spiciness,
+                        name: "감칠맛",
+                        step: spiciness ?? 0,
                       },
                       {
-                        name: "Saltiness",
-                        step: saltiness,
+                        name: "짠맛",
+                        step: saltiness ?? 0,
                       },
                       {
-                        name: "Sweetness",
-                        step: sweetness,
+                        name: "단맛",
+                        step: sweetness ?? 0,
                       },
                       {
-                        name: "Sourness",
-                        step: sourness,
+                        name: "신맛",
+                        step: sourness ?? 0,
                       },
                     ],
                   },
