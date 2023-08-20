@@ -105,8 +105,8 @@ const SelectModal = ({
                         {recommendTastes
                           ? recommendTastes.spiciness
                             ? recommendTastes.spiciness.toString()
-                            : "??"
-                          : "??"}
+                            : "No data"
+                          : "No data"}
                       </span>
                     </div>
                   </div>
@@ -128,8 +128,8 @@ const SelectModal = ({
                         {recommendTastes
                           ? recommendTastes.saltiness
                             ? recommendTastes.saltiness.toString()
-                            : "??"
-                          : "??"}
+                            : "No data"
+                          : "No data"}
                       </span>
                     </div>
                   </div>
@@ -150,7 +150,7 @@ const SelectModal = ({
                       <span className="text-[#FF4707]">
                         {recommendTastes && recommendTastes.sweetness
                           ? recommendTastes.sweetness.toString()
-                          : "??"}
+                          : "No data"}
                       </span>
                     </div>
                   </div>
@@ -171,7 +171,7 @@ const SelectModal = ({
                       <span className="text-[#FF4707]">
                         {recommendTastes && recommendTastes.sourness
                           ? recommendTastes.sourness.toString()
-                          : "??"}
+                          : "No data"}
                       </span>
                     </div>
                   </div>
