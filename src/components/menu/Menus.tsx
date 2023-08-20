@@ -86,7 +86,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
         <div className="w-full h-1/4 bg-[#FFF3B3] border-t-4 border-[#FF4707] border-dashed">
           <p className="py-2 px-4 text-lg">
             Cart
-            <span className="rounded-xl buttonSecondary text-white px-6">
+            <span className="rounded-xl buttonSecondary text-white px-6 ml-2">
               1
             </span>
           </p>
