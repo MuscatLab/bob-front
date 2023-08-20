@@ -12,12 +12,22 @@ const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       }),
     });
     const result = await data.json();
-
+    
     if (data.ok) {
-      router.push(`/order/result?ticket=${result["ticket_number"]}
-        &dnow=${result["donation_amount"]}
-        &tdpoint=${result["total_donation_amount"]}
-      `);
+      const mode = result.point_amount === 0 ? "saveup" : "donation"
+      if (mode === "saveup") {
+        router.push(`/order/result?ticket=${result["ticket_number"]}
+          &dnow=${result["donation_amount"]}
+          &tdpoint=${result["total_donation_amount"]}
+          &mode=donation
+        `);
+      } else {
+        router.push(`/order/result?ticket=${result["ticket_number"]}
+          &dnow=${result["point_amount"]}
+          &tdpoint=${result["total_point_amount"]}
+          &mode=saveup
+        `);
+      }
     }
   };
 

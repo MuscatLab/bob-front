@@ -1,9 +1,10 @@
 // Components
 
-const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string, tdpoint: string}}) => {
+const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string, tdpoint: string, mode: string}}) => {
   const orderNumber = searchParams["ticket"] ?? 777;
   const donated = searchParams["dnow"] ?? 5000;
   const donationPoint = searchParams["tdpoint"] ?? 102049;
+  const mode = searchParams["mode"] ?? "donation";
 
   return (
     <div className="flex bg-black justify-center items-center w-screen h-screen">
@@ -19,11 +20,11 @@ const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string
         </section>
         <section id="donate" className="bg-[#461B1B] h-full pt-20 px-4">
             <h1 className="text-3xl text-white">
-                You donated<br />
+                You {mode === "saveup" ? "earned" : "donated"}<br />
                 <span className="text-6xl text-[#FFB9A1]">{Number(donated).toLocaleString("en-US")}pt(s)</span>
             </h1>
             <p className="mt-6 text-xl text-white">
-                Your donation point is<br />
+                Your {mode === "saveup" ? "current" : "donation"} point is<br />
                 <span className="text-[#FFB9A1]">{Number(donationPoint).toLocaleString("en-US")}pt(s)</span>
             </p>
         </section>
