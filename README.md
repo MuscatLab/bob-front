@@ -18,6 +18,14 @@
 
 - `page.tsx` in **src/app** : Check if login and Advertise new/promotion products
 
+### Environment Settings
+
+- If you want to deploy at `CloudFlare Pages`, please add `nodejs_compat` flag to compaitibility flag menu.
+
+#### `.env` file settings
+
+- Add `BASE_URL` for backend endpoint, and add `BUCKET_URL` without `http://` or `https://` to download promotion image from your own server.
+
 ### Open-source License
 
 - [React.js](https://react.dev): MIT License
