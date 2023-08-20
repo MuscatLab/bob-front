@@ -275,7 +275,7 @@ const SelectModal = ({
               </div>
             </div>
           </div>
-          <div className="flex justify-end items-center text-[#FF4707] text-5xl">
+          <div className="flex justify-end items-center text-[#FF4707] text-5xl mr-8">
             <span className="mr-14">Total:</span>
             <span>₩ {data.price}</span>
           </div>
