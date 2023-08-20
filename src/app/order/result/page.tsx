@@ -32,3 +32,5 @@ const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string
   );
 };
 export default Result;
+
+export const runtime = 'edge';
