@@ -1,14 +1,10 @@
 // Components
 
-<<<<<<< Updated upstream
-const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string, tdpoint: string}}) => {
-=======
 const Result = ({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { ticket: string; dnow: string; tdpoint: string };
 }) => {
->>>>>>> Stashed changes
   const orderNumber = searchParams["ticket"] ?? 777;
   const donated = searchParams["dnow"] ?? 5000;
   const donationPoint = searchParams["tdpoint"] ?? 102049;
@@ -29,33 +25,21 @@ const Result = ({
             .
           </p>
         </section>
-<<<<<<< Updated upstream
-        <section id="donate" className="bg-[#461B1B] h-full pt-20 px-4">
-            <h1 className="text-3xl text-white">
-                You donated<br />
-                <span className="text-6xl text-[#FFB9A1]">{Number(donated).toLocaleString("en-US")}pt(s)</span>
-            </h1>
-            <p className="mt-6 text-xl text-white">
-                Your donation point is<br />
-                <span className="text-[#FFB9A1]">{Number(donationPoint).toLocaleString("en-US")}pt(s)</span>
-            </p>
-=======
         <section id="donate" className="bg-[#003D23] h-full pt-20 px-4">
           <h1 className="text-3xl text-white">
             You donated
             <br />
             <span className="text-6xl text-[#D0FFA1]">
-              {donated.toLocaleString("en-US")}pt(s)
+              {Number(donated).toLocaleString("en-US")}pt(s)
             </span>
           </h1>
           <p className="mt-6 text-xl text-white">
             Your donation point is
             <br />
             <span className="text-[#D0FFA1]">
-              {donationPoint.toLocaleString("en-US")}pt(s)
+              {Number(donationPoint).toLocaleString("en-US")}pt(s)
             </span>
           </p>
->>>>>>> Stashed changes
         </section>
       </div>
     </div>
@@ -63,4 +47,4 @@ const Result = ({
 };
 export default Result;
 
-export const runtime = 'edge';
+export const runtime = "edge";
