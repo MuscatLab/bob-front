@@ -25,7 +25,6 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
       const orderedMenu = await fetch(`/api/recommend?id=${id}`).then((res) =>
         res.json()
       );
-      console.log(orderedMenu);
       const taste: { [key: string]: Object } = {};
       const recommend = [];
 

@@ -13,10 +13,12 @@ const ChoiceBtn = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
     });
     const result = await data.json();
 
-    router.push(`/order/result?ticket=${result["ticket_number"]}
-      &dnow=${result["donation_amount"]}
-      &tdpoint=${result["total_point_amount"]}
-    `);
+    if (data.ok) {
+      router.push(`/order/result?ticket=${result["ticket_number"]}
+        &dnow=${result["donation_amount"]}
+        &tdpoint=${result["total_point_amount"]}
+      `);
+    }
   };
 
   return (

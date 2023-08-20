@@ -16,7 +16,6 @@ export default function Home() {
   useEffect(() => {
     const fetchAdImage = async () => {
       const res = await fetch(`/api/getMainImg`);
-      console.log(res.url);
       const img = await res.json();
       setAdImg(img[0].url);
     };
@@ -39,7 +38,6 @@ export default function Home() {
     const data = await res.json();
     if (res.ok) {
       localStorage.setItem("id", data.id);
-      console.log(data.id);
       setIsLogin(true);
     } else {
       alert("로그인 정보를 다시 확인해주세요!");

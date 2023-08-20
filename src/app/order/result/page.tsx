@@ -1,9 +1,6 @@
 // Components
-import { useState } from "react";
 
-const Result = ( { searchParams } : {
-  searchParams: { [key: string]: string | string[] | undefined };
-} ) => {
+const Result = ({ searchParams} : { searchParams: { ticket: string, dnow: string, tdpoint: string}}) => {
   const orderNumber = searchParams["ticket"] ?? 777;
   const donated = searchParams["dnow"] ?? 5000;
   const donationPoint = searchParams["tdpoint"] ?? 102049;
@@ -23,11 +20,11 @@ const Result = ( { searchParams } : {
         <section id="donate" className="bg-[#461B1B] h-full pt-20 px-4">
             <h1 className="text-3xl text-white">
                 You donated<br />
-                <span className="text-6xl text-[#FFB9A1]">{donated.toLocaleString("en-US")}pt(s)</span>
+                <span className="text-6xl text-[#FFB9A1]">{Number(donated).toLocaleString("en-US")}pt(s)</span>
             </h1>
             <p className="mt-6 text-xl text-white">
                 Your donation point is<br />
-                <span className="text-[#FFB9A1]">{donationPoint.toLocaleString("en-US")}pt(s)</span>
+                <span className="text-[#FFB9A1]">{Number(donationPoint).toLocaleString("en-US")}pt(s)</span>
             </p>
         </section>
       </div>
