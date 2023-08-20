@@ -46,12 +46,12 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
 
   return (
     <div className="w-full h-full flex-grow overflow-auto">
-      <div className="flex-grow h-3/4 overflow-wrap">
+      <div className="flex-grow h-3/4 w-full overflow-wrap grid grid-cols-3 py-2 px-4">
         {menus.map((m) => (
           <div
             key={m.id}
             className={`${recommendMenu.includes(m.name) && "recommend"}
-              p-2 m-4 flex flex-col justify-center w-40 items-center`}
+              p-2 flex flex-col justify-between w-40 items-center`}
           >
             <img
               src={m.image_url}
@@ -60,10 +60,12 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
                 setModalOpen(true);
               }}
             />
-            <p>{m.name}</p>
-            <div className="flex flex-row gap-2">
-              <p className="text-[#FF4707]">₩{m.price}</p>
-              <span className="text-[#7A7A7A]">{m.expected_time}min.</span>
+            <div>
+              <p>{m.name}</p>
+              <div className="flex flex-row gap-2">
+                <p className="text-[#FF4707]">₩ {m.price}</p>
+                <span className="text-[#7A7A7A]">{m.expected_time}min.</span>
+              </div>
             </div>
             {modalOpen && (
               <SelectModal
