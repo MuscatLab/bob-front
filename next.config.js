@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "muscatlab.s3.ap-northeast-1.amazonaws.com",
+        hostname: process.env.BUCKET_URL,
         port: "",
         pathname: "/**",
       },
