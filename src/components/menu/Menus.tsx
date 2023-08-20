@@ -6,6 +6,7 @@ import SelectModal from "./SelectModal";
 const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
   const [menus, setMenus] = useState<MenuType[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [menu, setMenu] = useState({ name: "" });
   const [recommendMenu, setMenuBright] = useState<String[]>([]);
   const [recommendTaste, setRecTaste] = useState<{
     [key: string]: string | Number | Object[] | Object;
@@ -56,6 +57,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
               className="w-30 cursor-pointer"
               onClick={() => {
                 setModalOpen(true);
+                setMenu(m);
               }}
             />
             <div>
@@ -65,20 +67,20 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
                 <span className="text-[#7A7A7A]">{m.expected_time}min.</span>
               </div>
             </div>
-            {modalOpen && (
-              <SelectModal
-                data={m}
-                recommend={recommendTaste && recommendTaste[m.name]}
-                cart={cart}
-                setCart={setCart}
-                isSelected={isSelected}
-                setIsSelected={setIsSelected}
-                modalOpen={modalOpen}
-                setModalOpen={setModalOpen}
-              />
-            )}
           </div>
         ))}
+        {modalOpen && (
+          <SelectModal
+            data={menu}
+            recommend={recommendTaste && recommendTaste[menu.name]}
+            cart={cart}
+            setCart={setCart}
+            isSelected={isSelected}
+            setIsSelected={setIsSelected}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+          />
+        )}
       </div>
       {isSelected && (
         <div className="w-full h-1/4 bg-[#FFF3B3] border-t-4 border-[#FF4707] border-dashed">
