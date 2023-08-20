@@ -344,6 +344,7 @@ const SelectModal = ({
                       },
                     ],
                   },
+                  mode: isChecked ? "donation" : "point"
                 });
                 setIsSelected(true);
                 setModalOpen(false);

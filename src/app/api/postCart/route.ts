@@ -9,8 +9,8 @@ export async function POST(request: Request) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            ...formerData.order,
-            return_amount_type: "DONATION"
+            menus: formerData.order.menus,
+            return_amount_type: formerData.order.mode
         })
     });
     const data = await res.json();
