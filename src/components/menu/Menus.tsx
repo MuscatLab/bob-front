@@ -59,7 +59,7 @@ const Menus = ({ data, cart, setCart, isSelected, setIsSelected }: any) => {
               }}
             />
             <div>
-              <p>{m.name}</p>
+              <p className="text-black">{m.name}</p>
               <div className="flex flex-row gap-2">
                 <p className="text-[#FF4707]">₩ {m.price}</p>
                 <span className="text-[#7A7A7A]">{m.expected_time}min.</span>
